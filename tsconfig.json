@@ -6,6 +6,7 @@
         "strict": true,
         "esModuleInterop": true,
         "moduleResolution": "Node",
+        "allowJs": true,
         "lib": [
             "dom",
             "es2015"
