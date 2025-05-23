@@ -24,23 +24,25 @@ export default function PdfReactPdf({ src }: PdfProps) {
   }
 
   return (
-    <div style={{ width: "100%", height: "100%" }}>
+    <div style={{ display: "flex", width: "100%", height: "100%", alignItems: "center", justifyContent: "center" }}>
       <button onClick={prevPage} disabled={pageNumber <= 1}>
         Previous
       </button>
+      <div>
+        <Document
+          file={src}
+          onLoadSuccess={onDocumentLoadSuccess}
+          className="my-react-pdf"
+        >
+          <Page pageNumber={pageNumber} />
+        </Document>
+        <p>
+          Page {pageNumber} of {numPages}
+        </p>
+      </div>
       <button onClick={nextPage} disabled={pageNumber >= (numPages ?? -1)}>
         Next
       </button>
-      <Document
-        file={src}
-        onLoadSuccess={onDocumentLoadSuccess}
-        className="my-react-pdf"
-      >
-        <Page pageNumber={pageNumber} />
-      </Document>
-      <p>
-        Page {pageNumber} of {numPages}
-      </p>
     </div>
   );
 }
