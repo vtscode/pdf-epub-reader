@@ -1,6 +1,6 @@
 import React, { useRef } from 'react';
 
-export default function FileUploader({ onFileChange }) {
+export default function FileUploader({ onFileChange, epubIframe, setIsEpubIframe }) {
   const inputRef = useRef(null);
 
   const handleClick = () => {
@@ -9,6 +9,7 @@ export default function FileUploader({ onFileChange }) {
 
   return (
     <div>
+      {!epubIframe && <>
       <input
         type="file"
         accept=".pdf,.epub"
@@ -17,7 +18,11 @@ export default function FileUploader({ onFileChange }) {
         onChange={(e) => onFileChange(e)}
       />
       <button onClick={handleClick}>
-        Upload PDF or EPUB
+        Open PDF File
+      </button>
+      </>}
+      <button onClick={() => setIsEpubIframe(!epubIframe)}>
+        {epubIframe ? "Switch PDF" : "Toogle EPUB"}
       </button>
     </div>
   );

@@ -12,6 +12,7 @@ export default function App() {
   const [filePDF, setFilePDF] = useState<File | null>(null);
   const [epubFile, setEpubFile] = useState<File | null>(null);
   const [urlEPUB, setUrlEPUB] = useState(null);
+  const [epubIframe, setIsEpubIframe] = useState(false);
   const handleFileChange = (e: any) => {
     const uploadedFile = e.target.files[0];
     if(uploadedFile?.name.endsWith(".epub")){
@@ -38,9 +39,10 @@ export default function App() {
 
   return (
     <div className="App">
-      <FileUploader onFileChange={handleFileChange} />
+      <FileUploader onFileChange={handleFileChange} setIsEpubIframe={setIsEpubIframe} epubIframe={epubIframe} />
       {filePDF && filePDF?.type === 'application/pdf' && <PdfReactPdf src={URL.createObjectURL(filePDF)} />}
       {epubFile && epubFile.name.endsWith('.epub') && <EpubReader src={urlEPUB || ""} />}
+      {epubIframe && <iframe src="https://app.flowoss.com/" frameBorder="0" style={{width: "100vw", margin: 0, padding: 0, height: "95vh"}} allowFullScreen />}
     </div>
   );
 }

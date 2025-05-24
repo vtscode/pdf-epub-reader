@@ -37,7 +37,7 @@ export default function PdfReactPdf({ src }: PdfProps) {
         <button onClick={prevPage} disabled={pageNumber <= 1}>
           {"<<<"}
         </button>
-        <p>
+        <p style={{margin: 0}}>
           Page {pageNumber} of {numPages}
         </p>
         <button onClick={nextPage} disabled={pageNumber >= (numPages ?? -1)}>
@@ -59,11 +59,11 @@ export default function PdfReactPdf({ src }: PdfProps) {
           <button onClick={() => handleChangeScale(0.6)}>Reset Scale</button>
         </div>
 
-      <div style={{ display: "flex", height: "100%", alignItems: "center", justifyContent: "center", gap: "8px", margin: "10px 0px" }}>
+      <div style={{ display: "flex", height: "100%", alignItems: "center", justifyContent: "center", gap: "8px" }}>
         <button onClick={prevPage} disabled={pageNumber <= 1}>
           {"<<<"}
         </button>
-        <p>
+        <p style={{margin: 0}}>
           Page {pageNumber} of {numPages}
         </p>
         <button onClick={nextPage} disabled={pageNumber >= (numPages ?? -1)}>
