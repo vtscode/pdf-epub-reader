@@ -14,7 +14,7 @@ export default function FileUploader({ onFileChange }) {
         accept=".pdf,.epub"
         hidden
         ref={inputRef}
-        onChange={(e) => onFileChange(e.target.files[0])}
+        onChange={(e) => onFileChange(e)}
       />
       <button onClick={handleClick}>
         Upload PDF or EPUB

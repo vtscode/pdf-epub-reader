@@ -16,7 +16,9 @@
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-pdf": "^9.1.1",
-    "react-scripts": "5.0.1"
+    "react-reader": "^2.0.13",
+    "react-scripts": "5.0.1",
+    "use-local-storage-state": "^19.5.0"
   },
   "devDependencies": {
     "@types/react": "18.2.38",

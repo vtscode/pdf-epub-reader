@@ -24,11 +24,17 @@ export default function PdfReactPdf({ src }: PdfProps) {
   }
 
   return (
-    <div style={{ display: "flex", width: "100%", height: "100%", alignItems: "center", justifyContent: "center" }}>
-      <button onClick={prevPage} disabled={pageNumber <= 1}>
-        Previous
-      </button>
-      <div>
+    <div style={{ display: "grid", height: "100%", alignItems: "center", justifyContent: "center", gap: "8px", margin: "10px 0px" }}>
+      <div style={{ display: "flex", height: "100%", alignItems: "center", justifyContent: "center", gap: "8px", margin: "10px 0px" }}>
+        <button onClick={prevPage} disabled={pageNumber <= 1}>
+          {"<<<"}
+        </button>
+        <button onClick={nextPage} disabled={pageNumber >= (numPages ?? -1)}>
+          {">>>"}
+        </button>
+      </div>
+
+      <div className="pdf-container">
         <Document
           file={src}
           onLoadSuccess={onDocumentLoadSuccess}
@@ -40,9 +46,15 @@ export default function PdfReactPdf({ src }: PdfProps) {
           Page {pageNumber} of {numPages}
         </p>
       </div>
-      <button onClick={nextPage} disabled={pageNumber >= (numPages ?? -1)}>
-        Next
-      </button>
+
+      <div style={{ display: "flex", height: "100%", alignItems: "center", justifyContent: "center", gap: "8px", margin: "10px 0px" }}>
+        <button onClick={prevPage} disabled={pageNumber <= 1}>
+          {"<<<"}
+        </button>
+        <button onClick={nextPage} disabled={pageNumber >= (numPages ?? -1)}>
+          {">>>"}
+        </button>
+      </div>
     </div>
   );
 }
