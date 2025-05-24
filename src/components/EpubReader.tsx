@@ -8,7 +8,6 @@ type SearchResult = { cfi: string; excerpt: string } //type for search result
 const EpubReader = (props : EpubProps) => {
   const [largeText, setLargeText] = useState(false);
   const [fontSizeState, setFontSizeState] = useState("100%");
-  console.log("🤔 what is  ~ EpubReader ~ fontSizeState:", fontSizeState)
   const [location, setLocation] = useLocalStorageState<string | number>(
     'persist-location',
     {
