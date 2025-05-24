@@ -23,6 +23,10 @@ export default function PdfReactPdf({ src }: PdfProps) {
     setPageNumber((v) => --v);
   }
 
+  const handleChangeSlider = (e: any) => {
+    setPageNumber(parseInt(e.target.value));
+  }
+
   return (
     <div style={{ display: "grid", height: "100%", alignItems: "center", justifyContent: "center", gap: "8px", margin: "10px 0px" }}>
       <div style={{ display: "flex", height: "100%", alignItems: "center", justifyContent: "center", gap: "8px", margin: "10px 0px" }}>
@@ -54,6 +58,10 @@ export default function PdfReactPdf({ src }: PdfProps) {
         <button onClick={nextPage} disabled={pageNumber >= (numPages ?? -1)}>
           {">>>"}
         </button>
+        <div className="slidecontainer">
+          <input type="range" min="1" step="1" max={numPages} value={pageNumber} onChange={handleChangeSlider}  className="slider" id="myRange" />  
+        </div>
+
       </div>
     </div>
   );
