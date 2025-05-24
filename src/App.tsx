@@ -37,12 +37,25 @@ export default function App() {
     reader.readAsArrayBuffer(file);
   };
 
+  const handleEpubToggle = (p: boolean) => {
+    setFilePDF(null);
+    setIsEpubIframe(p)
+  }
+
   return (
     <div className="App">
-      <FileUploader onFileChange={handleFileChange} setIsEpubIframe={setIsEpubIframe} epubIframe={epubIframe} />
+      <FileUploader onFileChange={handleFileChange} setIsEpubIframe={(p: boolean) => handleEpubToggle(p)} epubIframe={epubIframe} />
       {filePDF && filePDF?.type === 'application/pdf' && <PdfReactPdf src={URL.createObjectURL(filePDF)} />}
       {epubFile && epubFile.name.endsWith('.epub') && <EpubReader src={urlEPUB || ""} />}
-      {epubIframe && <iframe src="https://app.flowoss.com/" frameBorder="0" style={{width: "100vw", margin: 0, padding: 0, height: "95vh"}} allowFullScreen />}
+      {epubIframe && <iframe src="https://app.flowoss.com/" frameBorder="0"
+        style={{
+          width: "85vw",
+          margin: 0,
+          padding: 0,
+          height: "80vh"
+        }}
+        allowFullScreen
+      />}
     </div>
   );
 }
