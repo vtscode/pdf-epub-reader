@@ -1,6 +1,25 @@
+body{
+  padding: 0px;
+  margin: 0px;
+}
 .App {
   font-family: sans-serif;
+  padding: 10px;
   text-align: center;
+  height: 100%;
+  min-height: 100vh;
+}
+.flex-gap{
+  display: flex;
+  gap: 6px;
+  align-items: center;
+  justify-content: center;
+}
+.grid-gap{
+  display: grid;
+  gap: 6px;
+  align-items: center;
+  justify-content: center;
 }
 
 .pdf-container {

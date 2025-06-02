@@ -9,6 +9,7 @@ import PdfReactPdf from "./components/PdfReactPdf";
 import FileUploader from './components/FileUploader';
 
 export default function App() {
+  const [bgColor, setBgColor] = useState<string>("#333");
   const [filePDF, setFilePDF] = useState<File | null>(null);
   const [epubFile, setEpubFile] = useState<File | null>(null);
   const [urlEPUB, setUrlEPUB] = useState(null);
@@ -41,9 +42,17 @@ export default function App() {
     setFilePDF(null);
     setIsEpubIframe(p)
   }
+  const handleBgColorChg = (e: any) => {
+    setBgColor(e.target.value);
+    setFilePDF(null);
+  }
 
   return (
-    <div className="App">
+    <div className="App" style={{backgroundColor: bgColor}}>
+      <div className="flex-gap">
+        <span style={{backgroundColor: "white"}}>BG Color</span>
+        <input type="color" name="bgcolor" id="bgcolor" value={bgColor} onChange={handleBgColorChg} />
+      </div>
       <FileUploader onFileChange={handleFileChange} setIsEpubIframe={(p: boolean) => handleEpubToggle(p)} epubIframe={epubIframe} />
       {filePDF && filePDF?.type === 'application/pdf' && <PdfReactPdf src={URL.createObjectURL(filePDF)} />}
       {epubFile && epubFile.name.endsWith('.epub') && <EpubReader src={urlEPUB || ""} />}

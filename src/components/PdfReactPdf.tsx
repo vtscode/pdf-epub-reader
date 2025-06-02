@@ -27,18 +27,29 @@ export default function PdfReactPdf({ src }: PdfProps) {
   const handleChangeSlider = (e: any) => {
     setPageNumber(parseInt(e.target.value));
   }
+  const handleChangeVal = (e: any) => {
+    setPageNumber(parseInt(e.target.value));
+  }
   const handleChangeScale = (e: any) => {
     setScale(e);
   }
 
   return (
-    <div style={{ display: "grid", height: "100%", alignItems: "center", justifyContent: "center", gap: "8px", margin: "10px 0px" }}>
-      <div style={{ display: "flex", height: "100%", alignItems: "center", justifyContent: "center", gap: "8px"}}>
+    <div style={{ display: "grid", height: "100%", alignItems: "center", justifyContent: "center", gap: "8px", margin: "10px 0px 0px 0px" }}>
+      <div style={{ display: "flex", height: "100%", alignItems: "center", justifyContent: "center", gap: "8px" }}>
         <button onClick={prevPage} disabled={pageNumber <= 1}>
           {"<<<"}
         </button>
-        <p style={{margin: 0}}>
-          Page {pageNumber} of {numPages}
+        <p style={{margin: 0,backgroundColor: "white"}}>
+          Page 
+          <input
+            name="pageNumberUpper"
+            type="number"
+            min="1"
+            max={numPages}
+            value={pageNumber}
+            onChange={(e) => handleChangeVal(e)}
+          /> of {numPages}
         </p>
         <button onClick={nextPage} disabled={pageNumber >= (numPages ?? -1)}>
           {">>>"}
@@ -63,8 +74,16 @@ export default function PdfReactPdf({ src }: PdfProps) {
         <button onClick={prevPage} disabled={pageNumber <= 1}>
           {"<<<"}
         </button>
-        <p style={{margin: 0}}>
-          Page {pageNumber} of {numPages}
+        <p style={{margin: 0,backgroundColor: "white"}}>
+          Page 
+          <input
+            name="pageNumberBottom"
+            type="number"
+            min="1"
+            max={numPages}
+            value={pageNumber}
+            onChange={(e) => handleChangeVal(e)}
+          /> of {numPages}
         </p>
         <button onClick={nextPage} disabled={pageNumber >= (numPages ?? -1)}>
           {">>>"}
